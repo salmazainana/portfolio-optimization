@@ -1,0 +1,130 @@
+# FinalProject: Portfolio Optimization
+
+This repository implements two models for portfolio optimization:
+
+* **Sample Average Approximation (SAA)**
+* **Distributionally Robust Optimization (DRO)**
+
+Both problems are formulated in CVXPY and can be solved with ECOS and MOSEK.
+
+---
+
+## Prerequisites
+
+* **Python** 3.8 or higher
+* **pip** package manager
+* **virtualenv** (optional but recommended)
+
+---
+
+## 1. Create and Activate a Virtual Environment
+
+```bash
+# From the project root:
+python3 -m venv venv
+source venv/bin/activate        # macOS/Linux
+# or on Windows:
+# venv\Scripts\activate
+```
+
+---
+
+## 2. Install Python Dependencies
+
+1. **With requirements file** (if provided):
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Or install manually**:
+
+   ```bash
+   pip install cvxpy ecos scs osqp mosek
+   ```
+
+   * `cvxpy` — core convex optimization framework
+   * `ecos`, `scs`, `osqp` — open‑source solvers
+   * `mosek` — commercial solver (requires license)
+
+---
+
+## 3. MOSEK License Configuration
+
+If you plan to use MOSEK, you must obtain an academic or evaluation license and point CVXPY to the license file.
+
+1. **Place your license file** at, for example:
+
+   ```
+   ~/mosek/mosek.lic
+   ```
+
+2. **Set the environment variable** in your shell profile:
+
+   * For **zsh** (`~/.zshrc`):
+
+     ```bash
+     export MOSEKLM_LICENSE_FILE="$HOME/mosek/mosek.lic"
+     ```
+   * For **bash** (`~/.bash_profile` or `~/.bashrc`):
+
+     ```bash
+     export MOSEKLM_LICENSE_FILE="$HOME/mosek/mosek.lic"
+     ```
+
+3. **Reload your shell**:
+
+   ```bash
+   source ~/.zshrc      # or ~/.bash_profile
+   ```
+
+4. **Verify in Python**:
+
+   ```python
+   import cvxpy as cp
+   print(cp.installed_solvers())
+   # Should list: ECOS, SCS, OSQP, MOSEK
+   ```
+
+---
+
+## 4. Running the Models
+
+With the virtual environment active and dependencies installed, execute:
+
+```bash
+python3 src/models.py
+```
+
+This will solve both the SAA and DRO formulations and print their objective values.
+
+---
+
+## 5. Alternative Solver Usage
+
+If you do **not** have a MOSEK license, you can force CVXPY to use a different solver. In `src/models.py`, locate the `solve()` method and change:
+
+```python
+problem.solve(solver=getattr(cp, self.solver))
+```
+
+to, for example:
+
+```python
+problem.solve(solver=cp.SCS, verbose=True)
+```
+
+---
+
+## 6. Requirements File
+
+To capture your current environment, you can run:
+
+```bash
+pip freeze > requirements.txt
+```
+
+and share the generated `requirements.txt` with your team.
+
+---
+
