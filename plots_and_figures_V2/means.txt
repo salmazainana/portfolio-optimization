@@ -1,0 +1,4 @@
+Synthetic mean-risk median gain:  2.0626933612063472e-08 %
+FF10 mean-risk median gain:       21.545336073620668 %
+Synthetic shortfall median gain:  2.370174864127006e-09 %
+FF10 shortfall median gain:       2.1175871864568667 %

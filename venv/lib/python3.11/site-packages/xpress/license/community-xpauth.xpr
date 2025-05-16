@@ -1,0 +1,8 @@
+license expiry="30-apr-2026" features="Community OptLib OptConsole \
+	OptJava Barrier Network Quadratic Integer Threads=1024 \
+	ParaMIP=1024 ParaBar=1024 SLPLib MINLP GlobalLtd kalis" \
+	fico_xpress_release="9.6" hostid="any" platform="any" \
+	release="2025" static="uncounted" terminal-services sig="44f9 \
+	1a1a a850 f270 d6d6 6301 a377 1972 5d63 fc8b 90bf f556 c26b \
+	54c5 14b0 71fc 864c bd99 782e fa3c 4e1c 8f99 b688 05e4 99ab \
+	afe8 7f04 5e8d 3dc0 807b 77b5 987e"
